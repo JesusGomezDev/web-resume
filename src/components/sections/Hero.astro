@@ -29,11 +29,11 @@ const printInfo = [portfolioUrl, linkedUrl, githubUrl, email, phone].filter(Bool
 ---
 
 <Section>
-  <div class="container">
-    <div class="info">
-      <h1>{name}</h1>
-      <h2>{label}</h2>
-      <span>
+  <div class="flex flex-row items-center justify-between gap-1">
+    <div class="flex flex-col gap-2 pr-8">
+      <h1 class="text-4xl">{name}</h1>
+      <h2 class="text-[#b2b2b2] font-medium text-base">{label}</h2>
+      <span class="text-[#b2b2b2] flex items-center gap-1 text-sm tracking-tighter">
         <WorldMap />
         {city}, {region}
       </span>
@@ -46,6 +46,7 @@ const printInfo = [portfolioUrl, linkedUrl, githubUrl, email, phone].filter(Bool
             const Icon = SOCIAL_ICONS[network]
             return (
               <a
+              class="text-[#777] inline-flex items-center justify-center border border-gray-800 p-1 h-8 w-8 rounded-md transition-all duration-300 ease-in-out hover:bg-[#2d2d2d]"
               href={url}
               title={`Visit ${network}`}
               target="_blank"
@@ -59,6 +60,7 @@ const printInfo = [portfolioUrl, linkedUrl, githubUrl, email, phone].filter(Bool
         {
           email && (
             <a
+              class="text-[#777] inline-flex items-center justify-center border border-[#2d2d2d] p-1 h-8 w-8 rounded-md transition-all duration-300 ease-in-out hover:bg-[#2d2d2d]"
               href={`mailto:${email}`}
               title={`Send mail to ${name} at ${email}`}
               target="_blank"
@@ -71,6 +73,7 @@ const printInfo = [portfolioUrl, linkedUrl, githubUrl, email, phone].filter(Bool
         {
           phone && (
             <a
+              class="text-[#777] inline-flex items-center justify-center border border-[#2d2d2d] p-1 h-8 w-8 rounded-md transition-all duration-300 ease-in-out hover:bg-[#2d2d2d]"
               href={`tel:${phone}`}
               title={`Call ${name} at ${phone}`}
               target="_blank"
@@ -86,39 +89,10 @@ const printInfo = [portfolioUrl, linkedUrl, githubUrl, email, phone].filter(Bool
 </Section>
 
 <style>
-  .container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
 
-  .info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding-right: 32px;
-  }
 
   h1 {
     font-size: 2rem;
-  }
-
-  h2 {
-    color: #b2b2b2;
-    font-weight: 500;
-    font-size: 1.1rem;
-    text-wrap: balance;
-  }
-
-  span {
-    color: #b2b2b2;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-size: 0.85rem;
-    letter-spacing: -0.05rem;
   }
 
   footer {
@@ -127,23 +101,6 @@ const printInfo = [portfolioUrl, linkedUrl, githubUrl, email, phone].filter(Bool
     display: flex;
     gap: 4px;
     margin-top: 8px;
-  }
-
-  footer a {
-    color: #777;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #2d2d2d;
-    padding: 4px;
-    height: 32px;
-    width: 32px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-  }
-
-  footer a:hover {
-    background: #2d2d2d;
   }
 
   @media (width <= 700px) {

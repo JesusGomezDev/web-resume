@@ -161,8 +161,20 @@
       "level": "Master"
     },
     {
+      "name": "Astro",
+      "level": "Master"
+    },
+    {
       "name": "CSS",
       "level": "Master"
+    },
+    {
+      "name": "Tailwind",
+      "level": "Advanced"
+    },
+    {
+      "name": "Sass",
+      "level": "Advanced"
     },
     {
       "name": "JavaScript",
@@ -173,7 +185,7 @@
       "level": "Advanced"
     },
     {
-      "name": "Tailwind",
+      "name": "React",
       "level": "Advanced"
     },
     {
@@ -181,15 +193,7 @@
       "level": "Advanced"
     },
     {
-      "name": "React",
-      "level": "Advanced"
-    },
-    {
       "name": "Angular",
-      "level": "Advanced"
-    },
-    {
-      "name": "Sass",
       "level": "Advanced"
     },
     {

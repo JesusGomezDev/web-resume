@@ -11,7 +11,7 @@ const { image, summary, url } = basics
 ---
 
 <!doctype html>
-<html lang="es">
+<html class="bg-primary font-resume text-white letter-spacing-tighter" lang="es">
   <head>
     <meta charset="UTF-8" />
     <title>{title}</title>
@@ -33,30 +33,13 @@ const { image, summary, url } = basics
     <meta name="twitter:description" content={summary} />
     <meta name="twitter:image" content="" />
   </head>
-  <body>
+  <body class="p-0 m-0">
     <slot />
   </body>
 </html>
 
 <style is:global>
-  html {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      "Courier New",
-      Courier,
-      monospace;
-    background: #191a1a;
-    letter-spacing: -0.025rem;
-    color: #fff;
-  }
 
-  body,
-  figure {
-    margin: 0;
-    padding: 0;
-  }
 
   a {
     text-decoration: none;
