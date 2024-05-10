@@ -1,154 +1,171 @@
 ---
-import Section from "../Section.astro"
+import Section from "../Section.astro";
 
-import { work } from "@cv"
+import { work } from "@cv";
 ---
 
 <Section title="Work Experience">
-  <ul>
-    {
-      work.map(
-        ({ name, startDate, endDate, position, summary, highlights, url }) => {
-          interface IMonths {
-            [key: string]: string;
-          }
+    <ul class="flex flex-col gap-8">
+        {
+            work.map(
+                ({
+                    name,
+                    startDate,
+                    endDate,
+                    position,
+                    summary,
+                    highlights,
+                    url,
+                }) => {
+                    interface IMonths {
+                        [key: string]: string;
+                    }
 
-          const months: IMonths = {
-            "1": "Jan",
-            "2": "Feb",
-            "3": "Mar",
-            "4": "Apr",
-            "5": "May",
-            "6": "Jun",
-            "7": "Jul",
-            "8": "Aug",
-            "9": "Sep",
-            "10": "Oct",
-            "11": "Nov",
-            "12": "Dec"
-          }
+                    const months: IMonths = {
+                        "1": "Jan",
+                        "2": "Feb",
+                        "3": "Mar",
+                        "4": "Apr",
+                        "5": "May",
+                        "6": "Jun",
+                        "7": "Jul",
+                        "8": "Aug",
+                        "9": "Sep",
+                        "10": "Oct",
+                        "11": "Nov",
+                        "12": "Dec",
+                    };
 
-          const startYear = new Date(startDate).getFullYear()
-          const indexStartMonth = (new Date(startDate).getMonth() + 1).toString()
-          const startMonth = months[indexStartMonth];
-          const endYear =
-            endDate != null ? new Date(endDate).getFullYear() : "Current"
-          const indexEndMonth =
-            endDate != null ? (new Date(endDate).getMonth() + 1).toString() : "Current"
-          const endMonth = months[indexEndMonth];
+                    const startYear = new Date(startDate).getFullYear();
+                    const indexStartMonth = (
+                        new Date(startDate).getMonth() + 1
+                    ).toString();
+                    const startMonth = months[indexStartMonth];
+                    const endYear =
+                        endDate != null
+                            ? new Date(endDate).getFullYear()
+                            : "Current";
+                    const indexEndMonth =
+                        endDate != null
+                            ? (new Date(endDate).getMonth() + 1).toString()
+                            : "Current";
+                    const endMonth = months[indexEndMonth];
 
-          return (
-            <li>
-              <article>
-                <header>
-                  <div>
-                    <h3>
-                      <a href={url} title={`Ver ${name}`} target="_blank">
-                        {name}
-                      </a>
-                    </h3>
-                    <h4>{position}</h4>
-                    <h4>{highlights}</h4>
-                  </div>
+                    return (
+                        <li>
+                            <article>
+                                <header class="flex justify-between items-start mb-1">
+                                    <div>
+                                        <h3 class="font-medium text-[#111]">
+                                            <h3 class="text-[#eee]" >
+                                                {name}
+                                            </h3>
+                                        </h3>
+                                        <h4 class="color-[#ddd] font-medium">{position}</h4>
+                                        <a
+                                            class="text-[#eee]"
+                                            href={url}
+                                            title={`Ver ${highlights}`}
+                                            target="_blank"
+                                        >
+                                            {highlights}
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <time
+                                            datetime={startDate}
+                                            data-title={startDate}
+                                        >
+                                            {startMonth}/{startYear}
+                                        </time>
+                                        {" - "}
+                                        <time
+                                            datetime={endDate}
+                                            data-title={endDate}
+                                        >
+                                            {endMonth === undefined &&
+                                            endYear === "Current"
+                                                ? "Current"
+                                                : `${endMonth}/${endYear}`}
+                                        </time>
+                                    </div>
+                                </header>
 
-                  <div>
-                    <time
-                      datetime={startDate}
-                      data-title={startDate}>
-                        {startMonth}/{startYear}
-                    </time>
-                    {" - "}
-                    <time
-                      datetime={endDate}
-                      data-title={endDate}>
-                      {endMonth === undefined && endYear === "Current" ? "Current" : `${endMonth}/${endYear}`}
-                    </time>
-                  </div>
-                </header>
-
-                <footer>
-                  <p>{summary}</p>
-                </footer>
-              </article>
-            </li>
-          )
+                                <footer>
+                                    <p>{summary}</p>
+                                </footer>
+                            </article>
+                        </li>
+                    );
+                }
+            )
         }
-      )
-    }
-  </ul>
+    </ul>
 </Section>
 
 <style>
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  article h3 {
-    font-weight: 500;
-    color: #111;
-  }
-
-  article a {
-    color: #eee;
-  }
-
-  article a:hover {
-    text-decoration: underline;
-  }
-
-  article h4 {
-    color: #ddd;
-    font-weight: 400;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 4px;
-  }
-
-  time {
-    color: #aaa;
-    font-size: 0.85rem;
-    min-width: 102px;
-    cursor: default;
-  }
-
-  [data-title]:hover:after {
-    opacity: 1;
-    transition: all 0.1s ease-in-out 0.5s;
-    visibility: visible;
-  }
-
-  [data-title]:after {
-    content: attr(data-title);
-    background-color: #333;
-    color: #fff;
-    font-size: .75rem;
-    font-family: Menlo, Monaco, Lucida Console, "Courier New", monospace;;
-    position: absolute;
-    padding: .2rem .5rem;
-    bottom: -1.4rem;
-    left: 50%;
-    white-space: nowrap;
-    box-shadow: 1px 1px 1px #222222;
-    opacity: 0;
-    border: 1px solid #111111;
-    z-index: 99999;
-    visibility: hidden;
-    border-radius: 6px;
-  }
-
-  [data-title] {
-    position: relative;
-  }
-
-  @media (width <= 700px) {
-    time {
-      text-align: right;
+    /* TODO: Pending to change the ul styles */
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
     }
-  }
+
+    article a:hover {
+        text-decoration: underline;
+    }
+    /* TODO: Pending to change the header styles */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 4px;
+    }
+
+    time {
+        color: #aaa;
+        font-size: 0.85rem;
+        min-width: 102px;
+        cursor: default;
+    }
+
+    [data-title]:hover:after {
+        opacity: 1;
+        transition: all 0.1s ease-in-out 0.5s;
+        visibility: visible;
+    }
+
+    [data-title]:after {
+        content: attr(data-title);
+        background-color: #333;
+        color: #fff;
+        font-size: 0.75rem;
+        font-family:
+            Menlo,
+            Monaco,
+            Lucida Console,
+            "Courier New",
+            monospace;
+        position: absolute;
+        padding: 0.2rem 0.5rem;
+        bottom: -1.4rem;
+        left: 50%;
+        white-space: nowrap;
+        box-shadow: 1px 1px 1px #222222;
+        opacity: 0;
+        border: 1px solid #111111;
+        z-index: 99999;
+        visibility: hidden;
+        border-radius: 6px;
+    }
+
+    [data-title] {
+        position: relative;
+    }
+
+    @media (width <= 700px) {
+        time {
+            text-align: right;
+        }
+    }
 </style>

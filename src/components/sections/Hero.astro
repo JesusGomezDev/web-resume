@@ -1,132 +1,134 @@
 ---
-import { basics } from "@cv"
-import Section from "@/components/Section.astro"
-import Mail from "@/icons/Mail.astro"
-import Phone from "@/icons/Phone.astro"
-import LinkedIn from "@/icons/LinkedIn.astro"
-import GitHub from "@/icons/GitHub.astro"
-import WorldMap from "@/icons/WorldMap.astro"
-import Portfolio from "@/icons/Portfolio.astro"
-import type { SocialIcon } from "@/types"
+import { basics } from "@cv";
+import Section from "@/components/Section.astro";
+import Mail from "@/icons/Mail.astro";
+import Phone from "@/icons/Phone.astro";
+import LinkedIn from "@/icons/LinkedIn.astro";
+import GitHub from "@/icons/GitHub.astro";
+import WorldMap from "@/icons/WorldMap.astro";
+import Portfolio from "@/icons/Portfolio.astro";
+import type { SocialIcon } from "@/types";
 
-const { name, label, location, profiles, phone, email } = basics
-const { city, region } = location
+const { name, label, location, profiles, phone, email } = basics;
+const { city, region } = location;
 
 const SOCIAL_ICONS: SocialIcon = {
-  Portfolio,
-  LinkedIn,
-  GitHub,
-}
+    Portfolio,
+    LinkedIn,
+    GitHub,
+};
 
-const linkedInfo = profiles.find(({ network }) => network === "LinkedIn")
-const linkedUrl = linkedInfo?.url
-const githubInfo = profiles.find(({ network }) => network === "GitHub")
-const githubUrl = githubInfo?.url
-const portfolioInfo = profiles.find(({ network }) => network === "Portfolio")
-const portfolioUrl = portfolioInfo?.url
+const linkedInfo = profiles.find(({ network }) => network === "LinkedIn");
+const linkedUrl = linkedInfo?.url;
+const githubInfo = profiles.find(({ network }) => network === "GitHub");
+const githubUrl = githubInfo?.url;
+const portfolioInfo = profiles.find(({ network }) => network === "Portfolio");
+const portfolioUrl = portfolioInfo?.url;
 
-const printInfo = [portfolioUrl, linkedUrl, githubUrl, email, phone].filter(Boolean).join(" • ")
+const printInfo = [portfolioUrl, linkedUrl, githubUrl, email, phone]
+    .filter(Boolean)
+    .join(" • ");
 ---
 
 <Section>
-  <div class="flex flex-row items-center justify-between gap-1">
-    <div class="flex flex-col gap-2 pr-8">
-      <h1 class="text-4xl">{name}</h1>
-      <h2 class="text-[#b2b2b2] font-medium text-base">{label}</h2>
-      <span class="text-[#b2b2b2] flex items-center gap-1 text-sm tracking-tighter">
-        <WorldMap />
-        {city}, {region}
-      </span>
-      <footer class="print">
-        {printInfo}
-      </footer>
-      <footer class="no-print">
-        {
-          profiles.map(({ network, url, username }) => {
-            const Icon = SOCIAL_ICONS[network]
-            return (
-              <a
-              class="text-[#777] inline-flex items-center justify-center border border-gray-800 p-1 h-8 w-8 rounded-md transition-all duration-300 ease-in-out hover:bg-[#2d2d2d]"
-              href={url}
-              title={`Visit ${network}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              >
-                <Icon />
-              </a>
-            )
-          })
-        }
-        {
-          email && (
-            <a
-              class="text-[#777] inline-flex items-center justify-center border border-[#2d2d2d] p-1 h-8 w-8 rounded-md transition-all duration-300 ease-in-out hover:bg-[#2d2d2d]"
-              href={`mailto:${email}`}
-              title={`Send mail to ${name} at ${email}`}
-              target="_blank"
-              rel="noopener noreferrer"
+    <div class="flex flex-row items-center justify-between gap-1">
+        <div class="flex flex-col gap-2 pr-8">
+            <h1 class="text-4xl">{name}</h1>
+            <h2 class="text-[#b2b2b2] font-medium text-base">{label}</h2>
+            <span
+                class="text-[#b2b2b2] flex items-center gap-1 text-sm tracking-tighter"
             >
-              <Mail />
-            </a>
-          )
-        }
-        {
-          phone && (
-            <a
-              class="text-[#777] inline-flex items-center justify-center border border-[#2d2d2d] p-1 h-8 w-8 rounded-md transition-all duration-300 ease-in-out hover:bg-[#2d2d2d]"
-              href={`tel:${phone}`}
-              title={`Call ${name} at ${phone}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Phone />
-            </a>
-          )
-        }
-      </footer>
+                <WorldMap />
+                {city}, {region}
+            </span>
+            <footer class="print">
+                {printInfo}
+            </footer>
+            <footer class="no-print">
+                {
+                    profiles.map(({ network, url, username }) => {
+                        const Icon = SOCIAL_ICONS[network];
+                        return (
+                            <a
+                                class="text-[#777] inline-flex items-center justify-center border border-gray-800 p-1 h-8 w-8 rounded-md transition-all duration-300 ease-in-out hover:bg-[#2d2d2d]"
+                                href={url}
+                                title={`Visit ${network}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <Icon />
+                            </a>
+                        );
+                    })
+                }
+                {
+                    email && (
+                        <a
+                            class="text-[#777] inline-flex items-center justify-center border border-[#2d2d2d] p-1 h-8 w-8 rounded-md transition-all duration-300 ease-in-out hover:bg-[#2d2d2d]"
+                            href={`mailto:${email}`}
+                            title={`Send mail to ${name} at ${email}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Mail />
+                        </a>
+                    )
+                }
+                {
+                    phone && (
+                        <a
+                            class="text-[#777] inline-flex items-center justify-center border border-[] p-1 h-8 w-8 rounded-md transition-all duration-300 ease-in-out hover:bg-[#2d2d2d]"
+                            href={`tel:${phone}`}
+                            title={`Call ${name} at ${phone}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Phone />
+                        </a>
+                    )
+                }
+            </footer>
+        </div>
     </div>
-  </div>
 </Section>
 
 <style>
-
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  footer {
-    color: #555;
-    font-size: 0.65rem;
-    display: flex;
-    gap: 4px;
-    margin-top: 8px;
-  }
-
-  @media (width <= 700px) {
-    .container {
-      flex-direction: column-reverse;
+    h1 {
+        font-size: 2rem;
     }
 
-    .info {
-      justify-content: center;
-      align-items: center;
-      padding-right: 0;
-      text-align: center;
+    footer {
+        color: #555;
+        font-size: 0.65rem;
+        display: flex;
+        gap: 4px;
+        margin-top: 8px;
     }
 
-    figure {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    @media (width <= 700px) {
+        .container {
+            flex-direction: column-reverse;
+        }
 
-    h2 {
-      text-wrap: balance;
-    }
+        .info {
+            justify-content: center;
+            align-items: center;
+            padding-right: 0;
+            text-align: center;
+        }
 
-    figure {
-      margin: 0 auto;
+        figure {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            text-wrap: balance;
+        }
+
+        figure {
+            margin: 0 auto;
+        }
     }
-  }
 </style>
