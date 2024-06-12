@@ -4,7 +4,7 @@
     "label": "Full Stack Developer with over 2 years of experience in web and mobile development",
     "image": "",
     "email": "contacto@jesusgomezdev.com",
-    "phone": "+52 449 355 3548",
+    "phone": "",
     "url": "https://jesusgomezdev.com",
     "summary": "I am a fullstack developer with over two years of experience, with skills in web and mobile development. I have led development teams in some of my previous jobs. My experience as a freelancer has allowed me to work with multiple clients, helping them to digitize and enhance their businesses. In addition, I have contributed to the technological updating of the companies I have worked for, promoting their growth and competitiveness in the market.",
     "location": {
@@ -35,7 +35,7 @@
   "work": [
     {
       "name": "Fullstack Developer",
-      "position": "Fullstack Developer",
+      "position": "Team Lead",
       "url": "https://www.softtek.com/es/",
       "startDate": "2024-04-01",
       "endDate": null,
@@ -64,6 +64,16 @@
       "summary": "I was part of the development team of an e-commerce platform for a national auto parts company, my merits led me to become team lead in six months, working both on the sales platform and on the administrative platform. I led a team of 4 developers and helped establish strategies for more efficient development.",
       "highlights": [
         "Lion System Solutions"
+      ]
+    },
+    {
+      "name": "Fullstack Developer",
+      "position": "Freelancer",
+      "startDate": "2021-08-10",
+      "endDate": "2024-03-31",
+      "summary": "I worked as a freelance developer for more than 10 companies, undertaking multiple projects such as landing pages, an e-commerce site, a mobile application, and a social media hub for responding to messages in one place. I used design patterns and various technologies as Docker and Terraform.",
+      "highlights": [
+
       ]
     }
   ],
